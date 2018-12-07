@@ -1,0 +1,47 @@
+ int* nextGreaterElement(int* findNums, int findNumsSize, int* nums, int numsSize, int* returnSize) {
+     
+    int cntb = 0,cnta = 0;
+    int tgt ;
+    //形参中的returnsize为返回数组的大小
+    *returnSize=findNumsSize;
+    //需要新建一个数组并分配内存
+    int *res;
+    res=(int*)malloc(sizeof(int)*findNumsSize);
+    
+	
+	while(cntb<=numsSize) 
+	{
+		tgt=findNums[cnta];
+		
+		if(nums[cntb]==tgt)
+		{
+			cntb++;
+			while(cntb<numsSize)
+			{
+			
+				if(nums[cntb]>tgt){
+					res[cnta]=nums[cntb];
+					cnta++;
+					cntb=0;
+					break;
+				}
+				cntb++;
+				
+			}
+			if(cntb==numsSize){
+				
+				res[cnta]=-1;
+			
+				cntb=0;
+				cnta++;
+			}
+		}
+		else
+			cntb++;		
+	}
+ 
+    
+	return res;
+
+	
+}
